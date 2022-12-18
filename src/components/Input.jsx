@@ -2,31 +2,31 @@ import { useState } from "react";
 import Button from "./Button";
 
 const InputForm = () => {
-
   // Estados del InputForm
   const [nombre, setNombre] = useState("");
   const [contraseña, setContraseña] = useState("");
+  const [error, setError] = useState("");
 
-  
   // Función antes de enviar el InputForm
-  const validarDatos = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     // Validación
-    if (contraseña === "252525") {
-      setContraseña(true);
+    if (!nombre.trim()) {
+      setNombre("");
+      setError("El campo nombre está vacío");
       return;
     }
     {
-      setContraseña(false);
-      setNombre("");
+      setNombre("Hola " + nombre + "!");
       setContraseña("");
+      setError("");
     }
   };
 
   return (
     <>
-      <form className="alert alert-primary formulario" onSubmit={validarDatos}>
+      <form className="alert alert-primary formulario" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Nombre</label>
           <input
@@ -51,6 +51,8 @@ const InputForm = () => {
         </div>
         {contraseña === "252525" ? <Button /> : null}
       </form>
+      {error && <div>{error}</div>}
+  
     </>
   );
 };

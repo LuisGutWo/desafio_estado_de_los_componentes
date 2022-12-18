@@ -8,7 +8,7 @@ function App() {
   return (
 
     <>
-      <h1>Desafío Estado de los Componentes y Eventos</h1>
+      <h1 className="alert alert-secondary">Desafío Estado de los Componentes y Eventos</h1>
       <hr />
       <br />
         <Input />
